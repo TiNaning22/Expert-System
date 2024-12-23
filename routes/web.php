@@ -9,6 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('/user', function () {
     return view('layouts-user.main');
 });
@@ -17,6 +18,8 @@ Route::get('/tentang', function () {
     return view('user.kerusakan');
 });
 
+=======
+>>>>>>> 90de7303a9398559cbc4fc802580de42eafa5948
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->name('dashboard');
