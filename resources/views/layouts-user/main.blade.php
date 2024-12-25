@@ -21,7 +21,7 @@
         <!-- Navigation-->
         @include('layouts-user.navbar')
         <!-- Masthead-->
-        @include('layouts-user.jumbotron')
+
         <!-- Icons Grid-->
        
         <!-- Image Showcases-->

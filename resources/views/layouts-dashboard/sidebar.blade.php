@@ -31,8 +31,7 @@
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            Start Bootstrap
+            <a class="btn btn-primary" href="/logout">Log Out</a>
         </div>
     </nav>
 </div>

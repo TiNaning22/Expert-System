@@ -5,8 +5,8 @@
 
         <!-- Menu di kanan -->
         <div class="d-flex align-items-center">
-            <a class="nav-item nav-link mr-3" href="#">Home</a>
-            <a class="nav-item nav-link mr-3" href="#">Tentang Kerusakan</a>
+            <a class="nav-item nav-link mr-3" href="/">Home</a>
+            <a class="nav-item nav-link mr-3" href="/tentang">Tentang Kerusakan</a>
             <!-- Tombol Sign Up -->
             <a class="btn btn-primary" href="#signup">Sign Up</a>
         </div>
