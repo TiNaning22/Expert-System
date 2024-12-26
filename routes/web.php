@@ -16,6 +16,9 @@ Route::get('/', function () {
 Route::get('/tentang', function () {
     return view('user.kerusakan');
 });
+Route::get('/hasil', function () {
+    return view('user.hasil-diagnosa');
+});
 
 Route::get('/diagnosa', [UserController::class, 'diagnosa']);
 
@@ -29,8 +32,8 @@ Route::middleware([IsAdmin::class])->group(function () {
                 return view('dashboard.dashboard');
             })->name('dashboard');
     
-    Route::resource('/gejala', GejalaController::class)->middleware('auth');
-
+    Route::resource('/gejala', GejalaController::class);
     Route::resource('/kerusakan',KerusakanController::class);
+    Route::get('/rules', [RulesController::class, 'rules'])->name('rules');
 
 });

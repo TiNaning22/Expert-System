@@ -24,7 +24,7 @@
             </div>
             <div class="nav">
                 <div class="sb-sidenav-menu-heading"></div>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/rules">
                     <div class="sb-nav-link-icon"></i></div>
                     Rules
                 </a>

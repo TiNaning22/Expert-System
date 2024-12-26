@@ -9,22 +9,16 @@
                     <tr>
                         <th scope="col" class="text-center">No</th>
                         <th scope="col">Keterangan Gejala</th>
-                        <th scope="col" class="text-center">MB</th>
-                        <th scope="col" class="text-center">MD</th>
-                        <th scope="col" class="text-center">CF</th>
+                        <th scope="col">Tingkat Keyakinan</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Contoh data gejala -->
+
                     @foreach($gejala as $gejala)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $gejala->nama_gejala }}</td>
-                        <td class="text-center">{{ $gejala->mb }}</td>
-                        <td class="text-center">{{ $gejala->md }}</td>
-                        <td class="text-center">
-                            {{ number_format($gejala->mb - $gejala->md, 2) }}
-                        </td>
+                        <td><input type="number" step="0.1" name="cf[]" placeholder="CF User (0-1)" required></td>
                     </tr>
                     @endforeach
                 </tbody>
