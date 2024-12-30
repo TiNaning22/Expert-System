@@ -12,6 +12,7 @@
             <label for="nama_gejala" class="form-label">Nama Gejala</label>
             <input type="text" name="nama_gejala" id="nama_gejala" class="form-control" required>
         </div>
+        
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 </div>

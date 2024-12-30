@@ -11,16 +11,12 @@
                 <tr>
                     <th>Kode Gejala</th>
                     <th>Nama Gejala</th>
-                    <th>MB</th>
-                    <th>MD</th>
                 </tr>
             </thead>
             @foreach ($gejala as $gejala)
                 <tr>
                     <td>{{ $gejala->kode_gejala }}</td>
                     <td>{{ $gejala->nama_gejala }}</td>
-                    <td>{{ $gejala->mb }}</td>
-                    <td>{{ $gejala->md }}</td>
                 </tr>
             @endforeach
         </table>

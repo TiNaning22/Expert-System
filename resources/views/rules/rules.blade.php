@@ -6,30 +6,29 @@
                 <table class="table table-hover text-center">
                     <h4 class="text-center">Daftar kerusakan</h4>
                     <tr>
-                        <th>Kode Kerusakan</th>
+                        <th>ID</th>
                         <th>Nama Kerusakan</th>
+                        <th>Gejala</th>
+                        <th>MB</th>
+                        <th>MD</th>
+                        <th>Aksi</th>
                     </tr>
+                    @foreach ($rules as $rules)
+
                     <tr>
-                        <td>12</td>
-                        <td>afafa</td>
+                        <td>{{ $rules->id }}</td>
+                        <td>{{$rules->nama_kerusakan}}</td>
+                        <td>
+                            @foreach (json_decode($rules->gejala_ids) as $gejalaId)
+                                {{\App\Models\Gejala::find($gejalaId->nama_kerusakan)}}
+                            @endforeach
+                        </td>
+                        <td>{{ $rules->mb }}</td>
+                        <td>{{ $rules->md }}</td>
                     </tr>
-                </table>
-            </div>
-            <div class="col-6">
-                <table class="table table-hover text-center">
-                    <h4 class="text-center">Daftar Gejala</h4>
-                    <tr>
-                        <th>Kode Gejala</th>
-                        <th>Nama Gejala</th>
-                        <th>Nilai MB</th>
-                        <th>Check</th>
-                    </tr>
-                    <tr>
-                        <td>01</td>
-                        <td>aff</td>
-                        <td>2</td>
-                        <td><input type="checkbox" name="nama_kerusakan" id="nama_kerusakan"></td>
-                    </tr>
+                        
+                    @endforeach
+                      
                 </table>
             </div>
         </div>

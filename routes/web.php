@@ -5,7 +5,9 @@ use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RulesController;
 use App\Http\Controllers\GejalaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KerusakanController;
 
 
@@ -28,12 +30,9 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 #Admin 
 Route::middleware([IsAdmin::class])->group(function () {
-    Route::get('/dashboard', function () {
-                return view('dashboard.dashboard');
-            })->name('dashboard');
-    
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('/gejala', GejalaController::class);
     Route::resource('/kerusakan',KerusakanController::class);
-    Route::get('/rules', [RulesController::class, 'rules'])->name('rules');
+    Route::get('/rules', [RulesController::class, 'index'])->name('rules');
 
 });

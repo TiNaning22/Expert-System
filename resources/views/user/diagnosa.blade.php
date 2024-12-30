@@ -8,8 +8,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="text-center">No</th>
-                        <th scope="col">Keterangan Gejala</th>
+                        <th scope="col">Nama Gejala</th>
                         <th scope="col">Tingkat Keyakinan</th>
+                        <th scope="col">Pilih</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -18,7 +19,12 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $gejala->nama_gejala }}</td>
-                        <td><input type="number" step="0.1" name="cf[]" placeholder="CF User (0-1)" required></td>
+                        <td>{{ $gejala->tingkat_keyakinan }}</td>
+                        <td>
+                            <input type="checkbox" name="gejala_ids[]" value="{{ $gejala->id }}" id="gejala_{{ $gejala->id }}">
+                        </td>
+
+                        
                     </tr>
                     @endforeach
                 </tbody>
@@ -26,7 +32,7 @@
         </div>
     </div>
     <div class="text-center mt-4">
-        <button class="btn btn-primary">Lanjutkan Diagnosa</button>
+        <button class="btn btn-primary" type="submit">Lanjutkan Diagnosa</button>
     </div>
 </div>
 @endsection

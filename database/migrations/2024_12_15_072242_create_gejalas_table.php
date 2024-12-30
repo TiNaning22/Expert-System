@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('kode_gejala');
             $table->string('nama_gejala');
-            $table->string('mb');
-            $table->string('md');
             $table->timestamps();
         });
     }
