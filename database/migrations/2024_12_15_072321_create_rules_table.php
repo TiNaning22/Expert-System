@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('kerusakan_id');
+            $table->foreignId('kerusakan_id')->constrained('kerusakans')->onDelete('cascade');
             $table->json('gejala_ids');
-            $table->float('mb', 4, 2);
-            $table->float('md', 4, 2);
+            $table->json('mb');
+            $table->json('md');
             $table->timestamps();
 
-            $table->foreign('kerusakan_id')->references('id')->on('kerusakans')->onDelete('cascade');
         });
     }
 

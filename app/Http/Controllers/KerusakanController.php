@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Kerusakan;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Container\Attributes\Storage;
 
 class KerusakanController extends Controller
 {
@@ -70,7 +72,21 @@ class KerusakanController extends Controller
      */
     public function update(Request $request, Kerusakan $kerusakan)
     {
-        
+        $kerusakan->update($request->all());
+        if ($request->hasFile('gambar')) {
+            // Hapus gambar lama jika ada
+            if ($kerusakan->gambar) {
+                \Illuminate\Support\Facades\Storage::delete('public/' . $kerusakan->gambar);
+            }
+
+            // Simpan gambar baru dan perbarui path-nya
+            $path = $request->file('gambar')->store('kerusakan', 'public');
+            $kerusakan->gambar = $path;
+        }
+
+        // Simpan perubahan
+        $kerusakan->save();
+        return redirect('kerusakan')->with('success', 'kerusakan berhasil diupdate');
     }
 
     /**
@@ -78,7 +94,7 @@ class KerusakanController extends Controller
      */
     public function destroy(Kerusakan $kerusakan)
     {
-        //
+
     }
 }
 

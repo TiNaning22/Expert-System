@@ -46,7 +46,8 @@ class GejalaController extends Controller
      */
     public function edit(Gejala $gejala)
     {
-        
+        //edit gejala
+        return view('gejala.edit-gejala', compact('gejala'));
     }
 
     /**
@@ -54,7 +55,8 @@ class GejalaController extends Controller
      */
     public function update(Request $request, Gejala $gejala)
     {
-        //
+        $gejala->update($request->all());
+        return redirect('gejala')->with('success', 'Gejala berhasil diupdate');
     }
 
     /**

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gejala;
+use App\Models\Kerusakan;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Routing\Controller;
 
 class DiagnosaController extends Controller
 {

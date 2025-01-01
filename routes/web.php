@@ -15,14 +15,14 @@ Route::get('/', function () {
     return view('user.landing-page');
 });
 
-Route::get('/tentang', function () {
-    return view('user.kerusakan');
-});
+
 Route::get('/hasil', function () {
     return view('user.hasil-diagnosa');
 });
 
 Route::get('/diagnosa', [UserController::class, 'diagnosa']);
+
+Route::get('/tentang', [UserController::class, 'kerusakan']);
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'postLogin'])->name('postLogin');
@@ -33,6 +33,7 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('/gejala', GejalaController::class);
     Route::resource('/kerusakan',KerusakanController::class);
-    Route::get('/rules', [RulesController::class, 'index'])->name('rules');
+    Route::resource('/rules', RulesController::class);
+
 
 });

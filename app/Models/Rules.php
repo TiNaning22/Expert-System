@@ -14,11 +14,11 @@ class Rules extends Model
 
     public function kerusakan()
     {
-        return $this->belongsTo(Kerusakan::class);
+        return $this->belongsTo(Kerusakan::class, 'kerusakan_id');
     }
 
-    public function getGejalaIdsAttribute($value)
-    {
-        return json_decode($value, true);
-    }
+    // public function getGejalaIdsAttribute($value)
+    // {
+    //     $this->attributes['gejala_ids'] = json_encode($value);
+    // }
 }
