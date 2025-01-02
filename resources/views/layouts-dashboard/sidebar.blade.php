@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <a class="btn btn-primary" href="/logout">Log Out</a>
+            <a class="btn btn-primary" href="/">Home</a>
         </div>
     </nav>
 </div>

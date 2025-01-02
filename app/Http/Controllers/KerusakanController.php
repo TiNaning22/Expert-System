@@ -92,9 +92,10 @@ class KerusakanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kerusakan $kerusakan)
+    public function destroy($id)
     {
-
+        Kerusakan::destroy($id);
+        return redirect('kerusakan')->with('success', 'kerusakan berhasil dihapus');
     }
 }
 

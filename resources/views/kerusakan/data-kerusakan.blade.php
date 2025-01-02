@@ -31,6 +31,11 @@
                     </td>
                     <td>
                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $k->kode_kerusakan }}">Edit</button>
+                        <form action="{{ route('kerusakan.destroy', $k->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
                     </td>
                 </tr>
 

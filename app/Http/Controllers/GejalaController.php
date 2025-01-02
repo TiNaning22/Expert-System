@@ -62,8 +62,9 @@ class GejalaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Gejala $gejala)
+    public function destroy($id)
     {
-        //
+        Gejala::destroy($id);
+        return redirect('gejala')->with('success', 'Gejala berhasil dihapus');
     }
 }

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Gejala;
 use App\Models\Kerusakan;
+use App\Models\Rules;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+
 use Illuminate\Routing\Controller;
 
 class DiagnosaController extends Controller
@@ -20,32 +21,48 @@ class DiagnosaController extends Controller
     {
         $request->validate([
             'gejala_ids' => 'required|array',
+            'cf_user' => 'required|array',
         ]);
 
         $gejalaDipilih = $request->gejala_ids;
+        $cfUser = $request->cf_user;
 
-        $rule = Rule::whereJsonContains('gejala_ids', $gejalaDipilih)->get();
+        $rules = Rules::whereJsonContains('gejala_ids', $gejalaDipilih)->get();
 
         $hasilDiagnosa = [];
-        foreach ($rule as $rule) {
-            $kerusakanId = $rule->kerusakan_id;
-
-            //hitung CF
-            $cf = $rule->mb - $rule->md;
-
-            //CF Combine
-            $cfCombine = $cf * $rule->cf;
-
-            //ambil kerusakan yang memiliki CF terbesar
+        foreach ($rules as $rules) {
+            $kerusakanId = $rules->kerusakan_id;
             $kerusakan = Kerusakan::find($kerusakanId);
 
+            $cfCombine = 0;
+            $cfOld = 0;
+
+            foreach ($gejalaDipilih as $gejalaId) {
+                if (in_array($gejalaId, json_decode($rules->gejala_ids))) {
+                    $mb = $rules->mb;
+                    $md = $rules->md;
+                    $cfUser = $cfUser[$gejalaId];
+    
+                    $cfPakar = $mb - $md;
+                    $cfGejala = $cfPakar * $cfUser;
+    
+                    if ($cfOld == 0) {
+                        $cfCombine = $cfGejala;
+                    } else {
+                        $cfCombine = $cfOld + $cfGejala * (1 - $cfOld);
+                    }
+    
+                    $cfOld = $cfCombine;
+                }
+            }
+    
             $hasilDiagnosa[] = [
                 'kerusakan' => $kerusakan,
                 'cf' => $cfCombine,
             ];
         }
-
-        //urutkan hasil diagnosa berdasarkan CF
+    
+        // Urutkan hasil diagnosa berdasarkan CF
         usort($hasilDiagnosa, function ($a, $b) {
             return $b['cf'] <=> $a['cf'];
         });

@@ -8,7 +8,7 @@
             <a class="nav-item nav-link mr-3" href="/">Home</a>
             <a class="nav-item nav-link mr-3" href="/tentang">Tentang Kerusakan</a>
             <!-- Tombol Sign Up -->
-            <a class="btn btn-primary" href="/login">Sign Up</a>
+            
         </div>
     </div>
 </nav>

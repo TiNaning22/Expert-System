@@ -14,13 +14,6 @@ class UserController extends Controller
         return view('user.diagnosa', compact('gejala'));
     }
 
-    // public function hasil(Request $request)
-    // {
-    //     $gejala = $request->gejala;
-    //     $kerusakan = diagnosa($gejala);
-    //     return view('user.hasil-diagnosa', compact('kerusakan'));
-    // }
-
     public function kerusakan()
     {
         $kerusakan = Kerusakan::all();

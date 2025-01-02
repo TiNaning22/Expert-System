@@ -21,7 +21,13 @@
                     <td>{{ $g->nama_gejala }}</td>
                     <td>
                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $g->kode_gejala }}">Edit</button>
+                        <form action="{{ url('gejala/'.$g->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                        </form>
                     </td>
+                    
                 </tr>
 
                 <!-- Modal Edit -->

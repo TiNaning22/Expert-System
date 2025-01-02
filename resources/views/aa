@@ -1,104 +1,15 @@
 <div class="container mt-5">
-    <h2>Create Rule</h2>
-    <form action="/rules" method="POST">
-        @csrf
-        <div class="row">
-            <!-- Kolom Kiri (Gejala dan Keyakinan) -->
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="kerusakan" class="form-label">Kerusakan</label>
-                    <select name="kerusakan_id" id="kerusakan" class="form-select" required>
-                        <option value="" selected disabled>Pilih Kerusakan</option>
-                        @foreach ($kerusakan as $k)
-                            <option value="{{ $k->id }}">{{ $k->nama_kerusakan }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Gejala</th>
-                            <th>MB</th>
-                            <th>MD</th>
-                            <th>Check</th>
-                        </tr>
-                    </thead>
-                    <tbody id="gejala-list">
-                        <!-- Data Gejala akan dimuat secara dinamis -->
-                        @foreach ($gejala as $gejala)
-                            <tr>
-                                <td>{{ $gejala->nama_gejala }}</td>
-                                <td>
-                                    <input type="number" step="0.01" class="form-control" name="mb[{{ $gejala->id }}]" value="0">
-                                </td>
-                                <td>
-                                    <input type="number" step="0.01" class="form-control" name="md[{{ $gejala->id }}]" value="0">
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="gejala_ids[]" value="{{ $gejala->id }}">
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+        <h1 class="mb-5 text-center">Hasil Diagnosa</h1>
+        <div class="col justify-content-center">
+            <div class="row-lg-4 justify-content-center mb-4" style="border: 1px solid black">
+                <h4 class="mb-2">Gejala Yang Dialami</h4>
+                <span class="text-start">afjawfjaoifjawofjo</span>
             </div>
-
-            <!-- Kolom Kanan (Deskripsi Kerusakan) -->
-            <div class="col-md-6">
-                <h4>Detail Kerusakan</h4>
-                <p><strong>Nama Kerusakan:</strong> <span id="kerusakan-nama"></span></p>
-                <p><strong>Deskripsi:</strong> <span id="kerusakan-deskripsi"></span></p>
-                <p><strong>Solusi:</strong> <span id="kerusakan-solusi"></span></p>
+            <div class="row-lg-4 justify-content-center mb-4" style="border: 1px solid black">
+                <h4>Hasil Diagnosa</h4>
+            </div>
+            <div class="row-lg-4 justify-content-center mb-4" style="border: 1px solid black">
+                <h4>Solusi dan Saran</h4>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Simpan Rule</button>
-    </form>
-</div>
-
-<script>
-    $(document).ready(function () {
-        // Fungsi untuk memuat detail kerusakan dan gejala berdasarkan kerusakan yang dipilih
-        $('#kerusakan').on('change', function () {
-            const kerusakan_id = $(this).val();
-            
-            if (kerusakan_id) {
-                // Muat detail kerusakan
-                $.ajax({
-                    url: `/kerusakan/${kerusakan_id}`,
-                    type: 'GET',
-                    success: function (data) {
-                        $('#kerusakan-nama').text(data.nama_kerusakan);
-                        $('#kerusakan-deskripsi').text(data.deskripsi);
-                        $('#kerusakan-solusi').text(data.solusi);
-                    }
-                });
-
-                // Muat daftar gejala
-                $.ajax({
-                    url: `/kerusakan/${kerusakan_id}/gejala`,
-                    type: 'GET',
-                    success: function (data) {
-                        let rows = '';
-                        data.forEach(gejala => {
-                            rows += 
-                                <tr>
-                                    <td>{$gejala.nama_gejala}</td>
-                                    <td><input type="number" step="0.1" min="0" max="1" name="mb[${gejala.id}]" class="form-control" required></td>
-                                    <td><input type="number" step="0.1" min="0" max="1" name="md[${gejala.id}]" class="form-control" required></td>
-                                    <td><input type="checkbox" name="gejala_id[]" value="${gejala.id}"></td>
-                                </tr>
-                            `;
-                        });
-                        $('#gejala-list').html(rows);
-                    }
-                });
-            } else {
-                $('#kerusakan-nama').text('');
-                $('#kerusakan-deskripsi').text('');
-                $('#kerusakan-solusi').text('');
-                $('#gejala-list').html('');
-            }
-        });
-    });
-</script>
+    </div>
