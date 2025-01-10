@@ -11,22 +11,21 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\KerusakanController;
 
-
+//public
 Route::get('/', function () {
     return view('user.landing-page');
 });
-
 
 Route::get('/hasil', function () {
     return view('user.hasil-diagnosa');
 });
 
+Route::get('/tentang', [UserController::class, 'kerusakan']);
+
 Route::get('/diagnosa', [DiagnosaController::class, 'index'])->name('diagnosa');
 Route::post('/diagnosa/hasil', [DiagnosaController::class, 'hasil'])->name('diagnosa.hasil');
 
-Route::get('/tentang', [UserController::class, 'kerusakan']);
-
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'postLogin'])->name('postLogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

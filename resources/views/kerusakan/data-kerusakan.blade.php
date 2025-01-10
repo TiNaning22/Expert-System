@@ -6,7 +6,7 @@
         Data Kerusakan
     </div>
     <div class="card-body">
-        <table id="datatablesSimple">
+        <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>Kode Kerusakan</th>

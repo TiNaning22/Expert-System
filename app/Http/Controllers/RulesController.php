@@ -28,7 +28,6 @@ class RulesController extends Controller
     public function store(Request $request)
     {
 
-        
         $validated = $request->validate([
             'kerusakan_id' => 'required|exists:kerusakans,id',
             'gejala_ids' => 'required|array',

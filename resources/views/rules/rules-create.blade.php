@@ -3,8 +3,7 @@
 <form method="POST" action="/rules">
     @csrf
 <div class="row">
-   
-    <!-- Left Column: Gejala, MB, MD, and Check -->
+   <!-- Left Column: Gejala, MB, MD, and Check -->
     <div class="col-md-6">
         <table class="table table-bordered">
             <thead>
@@ -20,10 +19,10 @@
                 <tr>
                     <td>{{ $g->nama_gejala }}</td>
                     <td>
-                        <input type="number" step="0.01" class="form-control" id="mb" name="mb[{{ $g->mb }}]" value="0">
+                        <input type="number" step="0.01" class="form-control" id="mb" name="mb[{{ $g->id }}]" value="0">
                     </td>
                     <td>
-                        <input type="number" step="0.01" class="form-control" id="md" name="md[{{ $g->md }}]" value="0">
+                        <input type="number" step="0.01" class="form-control" id="md" name="md[{{ $g->id }}]" value="0">
                     </td>
                     <td>
                         <input type="checkbox" name="gejala_ids[]" value="{{ $g->id }}">

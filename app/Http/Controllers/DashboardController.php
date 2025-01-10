@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rules;
 use App\Models\Gejala;
 use App\Models\Kerusakan;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class DashboardController extends Controller
     {
         $gejala = Gejala::all();
         $kerusakan = Kerusakan::all();
-        return view('dashboard.dashboard', compact('gejala', 'kerusakan'));
+        $rules = Rules::all();
+        return view('dashboard.dashboard', compact('gejala', 'kerusakan', 'rules'));
     }
 }

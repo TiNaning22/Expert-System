@@ -1,7 +1,7 @@
 @extends('layouts-dashboard.main')
 @section('content')
-<div class="container">
-    <h1>Daftar Rules</h1>
+<div class="container mt-5">
+    <h1 class="text-center mb-4" >Daftar Rules</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -26,8 +26,8 @@
                         <span class="badge bg-primary">{{ $gejalaId }}</span>
                     @endforeach
                 </td>
-                <td>{{ $rule->mb }}</td>
                 <td>{{ $rule->md }}</td>
+                <td>{{ $rule->mb }}</td>
                 <td>
                     <a href="{{ route('rules.edit', $rule->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('rules.destroy', $rule->id) }}" method="POST" style="display:inline;">
